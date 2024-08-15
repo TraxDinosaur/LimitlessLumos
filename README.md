@@ -95,7 +95,7 @@ Contributions to **LimitlessLumos** are highly encouraged! Whether you have sugg
 
 ## License
 
-**LimitlessLumos** is distributed under the [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license. You are free to share and adapt the software as long as appropriate credit is given and any derivatives are licensed under the same terms.
+**LimitlessLumos** is distributed under the [CC-BY-SA 4.0](https://github.com/TraxDinosaur/LimitlessLumos/blob/main/LICENSE) license. You are free to share and adapt the software as long as appropriate credit is given and any derivatives are licensed under the same terms.
 
 ## Support
 
