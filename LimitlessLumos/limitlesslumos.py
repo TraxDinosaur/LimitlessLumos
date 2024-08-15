@@ -1,5 +1,6 @@
 from flask import Flask, render_template_string
 from threading import Thread
+import socket
 
 app = Flask(__name__)
 
@@ -86,14 +87,21 @@ def root():
     return render_template_string(html)
 
 
-def run():
-    app.run(host='0.0.0.0')
+def run(host='127.0.0.1', port=None):
+    app.run(host=host, port=port)
 
 
-def lumosServer():
-    t = Thread(target=run)
-    t.start()
+def lumosServer(host=None, port=None):
+    if host is None and port is None:
+        t = Thread(target=run)
+        t.start()
+    elif host == 'All':
+        t = Thread(target=run, args=('0.0.0.0', None))
+        t.start()
+    else:
+        t = Thread(target=run, args=(host, port))
+        t.start()
 
 
 if __name__ == '__main__':
-    lumosServer()
+    lumosServer(host='0.0.0.0', port=8080)
