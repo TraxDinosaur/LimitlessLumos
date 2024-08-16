@@ -112,17 +112,23 @@ def root() -> str:
 
             // Function to format time
             function formatTime(seconds) {{
-                let hours = Math.floor(seconds / 3600);
+                let days = Math.floor(seconds / 86400);
+                let hours = Math.floor((seconds % 86400) / 3600);
                 let minutes = Math.floor((seconds % 3600) / 60);
                 let secs = Math.floor(seconds % 60);
                 let timeStr = '';
-                if (hours > 0) {{
+
+                if (days > 0) {{
+                    timeStr += days + ' days ';
+                }}
+                if (hours > 0 || days > 0) {{
                     timeStr += hours + ' hours ';
                 }}
-                if (minutes > 0 || hours > 0) {{
+                if (minutes > 0 || hours > 0 || days > 0) {{
                     timeStr += minutes + ' minutes ';
                 }}
                 timeStr += secs + ' seconds';
+
                 return timeStr;
             }}
 
@@ -141,6 +147,7 @@ def root() -> str:
     </body>
     </html>
     '''
+
     return render_template_string(html)
 
 

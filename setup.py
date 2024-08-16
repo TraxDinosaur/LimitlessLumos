@@ -2,7 +2,7 @@ import setuptools
 
 # Package metadata
 NAME = "LimitlessLumos"
-VERSION = "1.0.7"
+VERSION = "1.0.8"
 DESCRIPTION = "A package providing a Flask-based server to keep Telegram bots and other scripts running indefinitely."
 URL = "https://github.com/TraxDinosaur/LimitlessLumos"
 AUTHOR = "TraxDinosaur"
