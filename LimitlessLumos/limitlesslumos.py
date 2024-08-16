@@ -28,6 +28,7 @@ def root() -> str:
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LimitlessLumos</title>
+        <link rel="icon" href="https://iili.io/dGAWkKv.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=MedievalSharp:wght@400;700&display=swap" rel="stylesheet">
         <style>
             body {{
