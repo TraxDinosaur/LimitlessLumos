@@ -27,11 +27,11 @@ def root() -> str:
 
     # Format runtime based on its length
     if hours > 0:
-        runtime_str = f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
+        runtime_str = f"{int(hours)} hours {int(minutes)}m {int(seconds)}s"
     elif minutes > 0:
-        runtime_str = f"{int(minutes)}m {int(seconds)}s"
+        runtime_str = f"{int(minutes)} minutes {int(seconds)}s"
     else:
-        runtime_str = f"{int(seconds)}s"
+        runtime_str = f"{int(seconds)} seconds"
 
     html = f'''
     <!DOCTYPE html>
