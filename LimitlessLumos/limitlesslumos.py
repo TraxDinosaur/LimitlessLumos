@@ -21,8 +21,17 @@ def root() -> str:
     # Calculate the runtime
     runtime = time.time() - start_time
 
-    # Format runtime in seconds
-    runtime_str = f"{runtime:.2f} seconds"
+    # Calculate hours, minutes, and seconds
+    hours, remainder = divmod(runtime, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    # Format runtime based on its length
+    if hours > 0:
+        runtime_str = f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
+    elif minutes > 0:
+        runtime_str = f"{int(minutes)}m {int(seconds)}s"
+    else:
+        runtime_str = f"{int(seconds)}s"
 
     html = f'''
     <!DOCTYPE html>
