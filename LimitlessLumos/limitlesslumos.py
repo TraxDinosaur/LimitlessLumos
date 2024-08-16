@@ -21,18 +21,6 @@ def root() -> str:
     # Calculate the runtime
     runtime = time.time() - start_time
 
-    # Calculate hours, minutes, and seconds
-    hours, remainder = divmod(runtime, 3600)
-    minutes, seconds = divmod(remainder, 60)
-
-    # Format runtime based on its length
-    if hours > 0:
-        runtime_str = f"{int(hours)} hours {int(minutes)}m {int(seconds)}s"
-    elif minutes > 0:
-        runtime_str = f"{int(minutes)} minutes {int(seconds)}s"
-    else:
-        runtime_str = f"{int(seconds)} seconds"
-
     html = f'''
     <!DOCTYPE html>
     <html lang="en">
@@ -112,11 +100,44 @@ def root() -> str:
         </div>
         <div class="info">
             Running File: <strong>{script_name}</strong><br>
-            Runtime: <strong>{runtime_str}</strong>
+            Runtime: <strong id="runtime"></strong>
         </div>
         <div class="copyright">
             &copy;2024 TraxDinosaur. All rights reserved.
         </div>
+
+        <script>
+            // Initial runtime passed from the server in seconds
+            let runtime = {int(runtime)};
+
+            // Function to format time
+            function formatTime(seconds) {{
+                let hours = Math.floor(seconds / 3600);
+                let minutes = Math.floor((seconds % 3600) / 60);
+                let secs = Math.floor(seconds % 60);
+                let timeStr = '';
+                if (hours > 0) {{
+                    timeStr += hours + ' hours ';
+                }}
+                if (minutes > 0 || hours > 0) {{
+                    timeStr += minutes + ' minutes ';
+                }}
+                timeStr += secs + ' seconds';
+                return timeStr;
+            }}
+
+            // Update the runtime every second
+            function updateRuntime() {{
+                runtime += 1;
+                document.getElementById('runtime').innerText = formatTime(runtime);
+            }}
+
+            // Start the timer
+            setInterval(updateRuntime, 1000);
+
+            // Initialize the timer with the initial runtime
+            document.getElementById('runtime').innerText = formatTime(runtime);
+        </script>
     </body>
     </html>
     '''
