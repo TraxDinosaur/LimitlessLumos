@@ -21,13 +21,24 @@ def root() -> str:
     # Calculate the runtime
     runtime = time.time() - start_time
 
+    hours, remainder = divmod(runtime, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    # Format runtime based on its length
+    if hours > 0:
+        runtime_str = f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
+    elif minutes > 0:
+        runtime_str = f"{int(minutes)}m {int(seconds)}s"
+    else:
+        runtime_str = f"{int(seconds)}s"
+
     html = f'''
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LimitlessLumos</title>
+        <title>🪄:{script_name} {int(minutes)}:{int(seconds)}s</title>
         <link rel="icon" href="https://iili.io/dGAWkKv.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=MedievalSharp:wght@400;700&display=swap" rel="stylesheet">
         <style>
@@ -104,7 +115,7 @@ def root() -> str:
             Runtime: <strong id="runtime"></strong>
         </div>
         <div class="copyright">
-            &copy;2024 TraxDinosaur. All rights reserved.
+            &copy;2025 TraxDinosaur. All rights reserved.
         </div>
 
         <script>
